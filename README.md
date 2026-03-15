@@ -48,3 +48,5 @@ TODO
 * Improve UI/add css 
 * Better responses for actions for the user
 * Fix minor edge-case bugs
+
+Note: This app was used in the same course (Tikawe period 1 autumn 2025) but did not pass due to a flaw in the code. I was instructed to apply to the same course at a later date. My goal is to better understand the development of web apps and polish/rework this app.
