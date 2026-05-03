@@ -9,7 +9,9 @@ The features include:
 * Searching for reviews by movie or review name 
 * Viewing the reviews for a movie from other users
 * Account profile page listing the reviews made by an user
-* Commenting on other users reviews 
+* Commenting on other users reviews
+
+### [Releases](https://github.com/laitiii/filmly/releases)
 
 ## Usage instructions
 After cloning or downloading the repository and changing your terminal working directory there run these commands:
