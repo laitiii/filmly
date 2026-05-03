@@ -18,7 +18,10 @@
         {% if results %}
           <ul>
             {% for item in results %}
-              <li><a href="/item/{{ item.id }}">{{ item.title }} - {{ item.movie }}</a></li>
+              <li>
+                <a href="/item/{{ item.id }}">{{ item.title }}</a>
+                {% if item.movie %}- {{ item.movie }}{% endif %}
+              </li>
             {% endfor %}
           </ul>
         {% else %}
