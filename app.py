@@ -180,6 +180,7 @@ def update_item():
 @app.route("/remove_item/<int:item_id>", methods=["GET", "POST"])
 def remove_item(item_id):
     require_login()
+    check_csrf()
 
     item = items.get_item(item_id)
     if not item:
