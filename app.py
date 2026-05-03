@@ -125,7 +125,6 @@ def edit_item(item_id):
         attributes[attribute] = ""
     for entry in items.get_attributes(item_id):
         attributes[entry["title"]] = entry["value"]
-    items.get_attributes(item_id)
 
     return render_template("edit_item.html", item=item, attributes=attributes, all_attributes=all_attributes)
 
