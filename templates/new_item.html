@@ -1,43 +1,38 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>New post</title>
-</head>
+{% block title %}New review{% endblock %}
 
-<body>
-  <h1>New post</h1>
+{% block content %}
+  <h1>New review</h1>
   <form action="/create_item" method="post">
     <p>
-      Post title: <br />
-      <input type="text" name="title" maxlength="50" required/>
+      Review title: <br />
+      <input type="text" name="title" maxlength="50" required />
     </p>
     <p>
       Movie title: <br />
-      <input type="text" name="movie" maxlength="100" placeholder="e.g. Batman" required/>
+      <input type="text" name="movie" maxlength="100" placeholder="e.g. Batman" required />
     </p>
     <p>
-      Post text: <br />
+      Review: <br />
       <textarea name="review" rows="10" cols="80" maxlength="1000" required></textarea>
     </p>
     <p>
       Score (1-100): <br />
-      <input name="score" type="number" pattern="^(100|[1-9][0-9]?)$" min="1" max="100" required inputmode="numeric">
+      <input name="score" type="number" pattern="^(100|[1-9][0-9]?)$" min="1" max="100" required inputmode="numeric" />
     </p>
     {% for attribute in attributes %}
-    <p>
-      {{ attribute }}: <br />
-      <select name="attributes[]" required>
-        <option value="">(select)</option>
-        {% for option in attributes[attribute] %}
-          <option value="{{ attribute }}:{{ option }}">{{ option }}</option>
-        {% endfor %}
-      </select>
-    </p>
+      <p>
+        {{ attribute }}: <br />
+        <select name="attributes[]" required>
+          <option value="">(select)</option>
+          {% for option in attributes[attribute] %}
+            <option value="{{ attribute }}:{{ option }}">{{ option }}</option>
+          {% endfor %}
+        </select>
+      </p>
     {% endfor %}
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
     <input type="submit" value="Post" />
   </form>
-</body>
-
-</html>
+{% endblock %}

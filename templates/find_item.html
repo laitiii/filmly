@@ -1,30 +1,31 @@
-<!DOCTYPE html>
-<head>
-  <title>Search for review</title>
-</head>
+{% extends "layout.html" %}
 
-<body>
-    <h1>Search for review</h1>
+{% block title %}Search reviews{% endblock %}
+
+{% block content %}
+  <section aria-labelledby="search-heading">
+    <h1 id="search-heading">Search for review</h1>
     <form action="/find_item" method="get">
-    <p>
-    Keyword: <input type="text" name="query" value="{{ query }}">
-    </p>
-    <input type="submit" value="send">
+      <p>
+        Keyword: <input type="text" name="query" value="{{ query }}">
+      </p>
+      <input type="submit" value="Search">
     </form>
 
     {% if query %}
-    <h2>Search results</h2>
-
-    <ul>
-        {% for item in results %}
-        <li><a href="/item/{{ item.id }}">{{ item.title }}{{ item.movie }}</a></li>
-        {% endfor %}
-    </ul>
-
-    <p>
-    <a href="/" >Return to main page</a>
-    </p>
-
+      <section>
+        <h2>Search results</h2>
+        {% if results %}
+          <ul>
+            {% for item in results %}
+              <li><a href="/item/{{ item.id }}">{{ item.title }} - {{ item.movie }}</a></li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No matching reviews found.</p>
+        {% endif %}
+        <p><a href="/">Return to main page</a></p>
+      </section>
     {% endif %}
-</body>
-</html>
+  </section>
+{% endblock %}

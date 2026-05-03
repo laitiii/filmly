@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}{% endblock %} - Filmly</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+  <header>
+    <h1><a href="/">Filmly</a></h1>
+
+    {% if session.username %}
+      <p>
+        You are logged in as: <strong>{{ session.username }}</strong> (UID <strong>{{ session.user_id }}</strong>) <a href="/logout">Log out</a>
+      </p>
+      <nav aria-label="User">
+        <ul>
+          <li><a href="/new_item">New review</a></li>
+          <li><a href="/find_item">Search</a></li>
+        </ul>
+      </nav>
+    {% else %}
+      <nav aria-label="Auth">
+        <ul>
+          <li><a href="/login">Log in</a></li>
+          <li><a href="/register">Register</a></li>
+          <li><a href="/find_item">Search</a></li>
+        </ul>
+      </nav>
+    {% endif %}
+  </header>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <section class="flash-messages" aria-live="polite">
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+  {% endwith %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

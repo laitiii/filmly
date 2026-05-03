@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Edit review</title>
-</head>
+{% block title %}Edit review{% endblock %}
 
-<body>
+{% block content %}
   <h1>Edit review</h1>
   <form action="/update_item" method="post">
     <p>
       Review title: <br />
-      <input type="text" name="title" value="{{ item.title }}" maxlength="50" required/>
+      <input type="text" name="title" value="{{ item.title }}" maxlength="50" required />
     </p>
     <p>
       Movie title: <br />
-      <input type="text" name="movie" value="{{ item.movie }}" maxlength="100" required/>
+      <input type="text" name="movie" value="{{ item.movie }}" maxlength="100" required />
     </p>
     <p>
       Review: <br />
@@ -22,27 +19,21 @@
     </p>
     <p>
       Score (1-100): <br />
-      <input name="score" type="number" pattern="^(100|[1-9][0-9]?)$" min="1" max="100" required inputmode="numeric" value="{{ item.score }}">
+      <input name="score" type="number" pattern="^(100|[1-9][0-9]?)$" min="1" max="100" required inputmode="numeric" value="{{ item.score }}" />
     </p>
     {% for attribute in all_attributes %}
-    <p>
-      {{ attribute }}: <br />
-      <select name="attributes[]" required>
-        <option value="">{{ attribute[] }}</option>
-        {% for option in all_attributes[attribute] %}
-          {% if attributes[attribute] == option %}
-          <option value="{{ attribute }}:{{ option }}" selected>{{ option }}</option>
-          {% else %}
-          <option value="{{ attribute }}:{{ option }}">{{ option }}</option>
-          {% endif %}
-        {% endfor %}
-      </select>
-    </p>
+      <p>
+        {{ attribute }}: <br />
+        <select name="attributes[]" required>
+          <option value="">{{ attributes[attribute] or "(select)" }}</option>
+          {% for option in all_attributes[attribute] %}
+            <option value="{{ attribute }}:{{ option }}" {% if attributes[attribute] == option %}selected{% endif %}>{{ option }}</option>
+          {% endfor %}
+        </select>
+      </p>
     {% endfor %}
     <input type="hidden" name="item_id" value="{{ item.id }}" />
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
     <input type="submit" value="Save changes" />
   </form>
-</body>
-
-</html>
+{% endblock %}

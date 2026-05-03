@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Delete review</title>
-</head>
+{% block title %}Delete review{% endblock %}
 
-<body>
-    <h1>Delete review</h1>
-        <p> Review: {{ item.title }} ({{ item.movie }})</p>
-        <p>Are you sure you want to delete this review? (This cannot be undone)</p>
-        <form action="/remove_item/{{ item.id }}" method="post">
-        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
-        <input type="submit" name="remove"value="Delete post">
-        <input type="submit" name="back"value="Return to post">
-
-
+{% block content %}
+  <h1>Delete review</h1>
+  <p>Review: {{ item.title }} ({{ item.movie }})</p>
+  <p>Are you sure you want to delete this review? This action cannot be undone.</p>
+  <form action="/remove_item/{{ item.id }}" method="post">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
+    <input type="submit" name="remove" value="Delete post" />
+    <input type="submit" name="back" value="Return to post" />
   </form>
-</body>
-
-</html>
+{% endblock %}

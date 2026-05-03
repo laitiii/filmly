@@ -188,14 +188,14 @@ def remove_item(item_id):
         abort(403)
 
     if request.method == "GET":
-        return render_template("/remove_item.html", item=item)
+        return render_template("remove_item.html", item=item)
 
     if request.method == "POST":
         if "remove" in request.form:
             items.remove_item(item_id)
             return redirect("/")
         else:
-            return redirect("/item/" +str(item_id))
+            return redirect("/item/" + str(item_id))
 
 @app.route("/register")
 def register():
