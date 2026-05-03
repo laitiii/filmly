@@ -161,7 +161,6 @@ def update_item():
         attributes[attribute] = ""
     for entry in items.get_attributes(item_id):
         attributes[entry["title"]] = entry["value"]
-    items.get_attributes(item_id)
 
     attributes = []
     for entry in request.form.getlist("attributes[]"):
