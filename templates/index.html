@@ -3,32 +3,6 @@
 {% block title %}Filmly{% endblock %}
 
 {% block content %}
-
-    <section aria-labelledby="search-heading">
-        <h1>Search for review</h1>
-        <form action="/find_item" method="get">
-        <p>
-        Keyword: <input type="text" name="query" value="{{ query }}">
-        </p>
-        <input type="submit" value="send">
-        </form>
-
-        {% if query %}
-        <h2>Search results</h2>
-
-        <ul>
-            {% for item in results %}
-            <li><a href="/item/{{ item.id }}">{{ item.title }}{{ item.movie }}</a></li>
-            {% endfor %}
-        </ul>
-
-        <p>
-        <a href="/" >Return to main page</a>
-        </p>
-
-        {% endif %}
-    </section>
-
     <section aria-labelledby="reviews-heading">
       <h2 id="reviews-heading">Reviews</h2>
 
