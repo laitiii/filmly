@@ -242,4 +242,5 @@ def logout():
     if "user_id" in session:
         del session["user_id"]
         del session["username"]
+        del session["csrf_token"]
     return redirect("/")
