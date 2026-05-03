@@ -11,8 +11,8 @@ The features include:
 * Account profile page listing the reviews made by an user
 * Commenting on other users reviews 
 
-Testing instructions:
-After cloning the repository and changing your terminal working directory there run these commands:
+## Usage instructions
+After cloning or downloading the repository and changing your terminal working directory there run these commands:
 
 Creating the virtual environment and installing requirements:
 
@@ -44,9 +44,5 @@ flask run
 
 Then go to http://localhost:5000 in your browser to use the app.
 
-TODO
-* Improve UI/add css 
-* Better responses for actions for the user
-* Fix minor edge-case bugs
 
 Note: This app was used in the same course (Tikawe period 1 autumn 2025) but did not pass due to a flaw in the code. I was instructed to apply to the same course at a later date. My goal is to better understand the development of web apps and polish/rework this app.
