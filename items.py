@@ -72,6 +72,8 @@ def update_item(item_id, title, movie, review, score, attributes):
         db.execute(sql, [item_id, title, value])
 
 def remove_item(item_id):
+    sql = "DELETE FROM comments WHERE item_id = ?"
+    db.execute(sql, [item_id])
     sql = "DELETE FROM item_attributes WHERE item_id = ?"
     db.execute(sql, [item_id])
     sql = "DELETE FROM items WHERE id = ?"
